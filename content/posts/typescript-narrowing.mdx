@@ -1,0 +1,55 @@
+---
+title: The narrowing trick I use most in TypeScript
+date: 2026-04-15
+description: A small pattern for turning loose unions into airtight code paths, and why I reach for it constantly.
+tags: [typescript, patterns]
+category: Engineering
+---
+
+If you've written TypeScript for any length of time, you've probably
+hit the situation where a value's type is _almost_ what you want, but
+the compiler refuses to play along. Discriminated unions are the usual
+escape hatch — and the one feature I think every TS user should know
+inside out.
+
+## The shape
+
+A discriminated union is just a union of object types where each member
+carries a unique literal value on a shared key:
+
+```ts
+type Result<T> =
+  | { status: "ok"; value: T }
+  | { status: "error"; error: Error };
+```
+
+The `status` field is the discriminant. Once you check it, TS knows
+which branch you're in:
+
+```ts
+function unwrap<T>(r: Result<T>): T {
+  if (r.status === "error") {
+    throw r.error;
+  }
+  // r is now { status: "ok"; value: T }
+  return r.value;
+}
+```
+
+No casts, no `as`, no runtime type guards. The compiler does the work.
+
+## Why I reach for it constantly
+
+Most "loose" types I encounter — API responses, parser output, state
+machines — are secretly discriminated unions waiting to be written
+down. Pinning the discriminant explicitly turns a comment ("this field
+only exists when …") into an invariant the compiler enforces.
+
+The cost is one extra string field per variant. The benefit is that
+every consumer downstream gets exhaustive checking _for free_.
+
+> If you find yourself writing `if (x.foo !== undefined)` repeatedly,
+> there's almost certainly a discriminated union hiding in your types.
+
+That single rewrite has fixed more bugs in my code than any linter
+rule I've ever turned on.

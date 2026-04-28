@@ -3,31 +3,65 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-50;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* rehype-pretty-code emits per-line spans we use for line numbering / highlight. */
+code[data-line-numbers] {
+  counter-reset: line;
+}
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.5rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: rgb(115 115 115);
+}
+
+pre [data-line] {
+  padding: 0 1rem;
+  border-left: 2px solid transparent;
+}
+pre [data-highlighted-line] {
+  background: rgba(255, 255, 255, 0.06);
+  border-left-color: rgb(115 115 115);
+}
+pre [data-highlighted-chars] {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+}
+
+/* rehype-pretty-code wraps inline code with `data-inline-code`; restyle so
+   it isn't rendered as a full block. */
+:not(pre) > code {
+  @apply rounded bg-neutral-100 px-1 py-0.5 font-mono text-[0.9em] text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200;
+}
+
+pre {
+  @apply overflow-x-auto rounded-lg border border-neutral-800 bg-[#0d1117] py-4 text-sm leading-relaxed;
+}
+pre code {
+  @apply grid bg-transparent p-0 text-inherit;
+  counter-reset: line;
+}
+
+figure[data-rehype-pretty-code-figure] {
+  @apply my-6;
+}
+figcaption[data-rehype-pretty-code-title] {
+  @apply mb-1 px-1 font-mono text-xs text-neutral-500;
 }
