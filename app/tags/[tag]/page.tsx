@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CrtScreen } from "@/components/crt-screen";
 import { PostCard } from "@/components/post-card";
 import { findTag, getAllTags, getPostsByTag, toSlug } from "@/lib/posts";
 
@@ -33,24 +34,29 @@ export default async function TagPage({
   const posts = getPostsByTag(tag);
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <header className="mb-10">
-        <p className="font-mono text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-          Tag
-        </p>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
-          #{tag}
-        </h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-          {posts.length} {posts.length === 1 ? "post" : "posts"}.
-        </p>
-      </header>
+    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
+      <CrtScreen modelLabel={`TAG · #${tag.toUpperCase()}`}>
+        <div className="space-y-5 font-display text-xl sm:text-2xl">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] opacity-70">
+            TAG
+          </p>
+          <h1 className="font-display text-4xl tracking-wide sm:text-5xl">
+            #{tag.toUpperCase()}
+            <span className="cursor-block" />
+          </h1>
+          <p className="opacity-85">
+            {posts.length} FILE{posts.length === 1 ? "" : "S"}
+          </p>
 
-      <div className="flex flex-col gap-2">
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
-      </div>
+          <hr className="crt-hr" />
+
+          <div className="space-y-2">
+            {posts.map((post, i) => (
+              <PostCard key={post.slug} post={post} index={i} />
+            ))}
+          </div>
+        </div>
+      </CrtScreen>
     </div>
   );
 }

@@ -4,27 +4,36 @@ import type { Post } from "@/lib/posts";
 import { CategoryPill } from "./category-pill";
 import { TagPill } from "./tag-pill";
 
-export function PostCard({ post }: { post: Post }) {
+function pad(n: number, width = 3) {
+  return n.toString().padStart(width, "0");
+}
+
+export function PostCard({ post, index = 0 }: { post: Post; index?: number }) {
   return (
-    <article className="group relative rounded-lg border border-transparent p-4 -mx-4 transition hover:border-neutral-200 hover:bg-neutral-50 dark:hover:border-neutral-800 dark:hover:bg-neutral-900/50">
-      <Link href={post.permalink} className="block">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-lg font-semibold tracking-tight text-neutral-900 group-hover:underline dark:text-neutral-50">
-            {post.title}
-          </h2>
+    <article className="group relative border border-transparent px-3 py-2 transition hover:border-phosphor-dim hover:bg-phosphor/[0.06]">
+      <Link href={post.permalink} className="block no-underline">
+        <div className="flex flex-wrap items-baseline justify-between gap-3">
+          <h3 className="flex items-baseline gap-3 font-display text-2xl leading-tight tracking-wide group-hover:text-phosphor">
+            <span className="opacity-60">{pad(index + 1)}</span>
+            <span className="opacity-95 group-hover:underline">
+              {post.title.toUpperCase()}
+            </span>
+          </h3>
           <time
             dateTime={post.date}
-            className="font-mono text-xs text-neutral-500 dark:text-neutral-400"
+            className="font-mono text-xs uppercase tracking-wide opacity-70"
           >
             {formatDate(post.date)}
           </time>
         </div>
-        <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-          {post.description}
-        </p>
+        {post.description && (
+          <p className="mt-1 text-base leading-snug opacity-85">
+            {post.description}
+          </p>
+        )}
       </Link>
       {(post.tags.length > 0 || post.category) && (
-        <div className="mt-3 flex flex-wrap items-center gap-1.5">
+        <div className="mt-2 flex flex-wrap items-center gap-1.5">
           {post.category && <CategoryPill category={post.category} />}
           {post.tags.map((tag) => (
             <TagPill key={tag} tag={tag} />

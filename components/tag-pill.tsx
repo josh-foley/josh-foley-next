@@ -5,7 +5,7 @@ export function TagPill({ tag }: { tag: string }) {
   return (
     <Link
       href={`/tags/${toSlug(tag)}`}
-      className="inline-flex items-center rounded-full border border-neutral-200 px-2.5 py-0.5 text-xs font-medium text-neutral-700 transition hover:border-neutral-400 hover:text-neutral-900 dark:border-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-500 dark:hover:text-neutral-50"
+      className="inline-flex items-center border border-dashed border-phosphor-dim px-2 py-0.5 font-mono text-xs uppercase tracking-wider text-phosphor-soft no-underline transition hover:border-phosphor hover:text-phosphor"
     >
       #{tag}
     </Link>

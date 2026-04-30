@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CrtScreen } from "@/components/crt-screen";
 import { getAllTags, toSlug } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -11,31 +12,39 @@ export default function TagsPage() {
   const tags = getAllTags();
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <header className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
-          Tags
-        </h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-          {tags.length} {tags.length === 1 ? "tag" : "tags"} across the blog.
-        </p>
-      </header>
+    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
+      <CrtScreen modelLabel="TAGS · INDEX">
+        <div className="space-y-5 font-display text-xl sm:text-2xl">
+          <p className="prompt opacity-90">LIST TAGS</p>
+          <h1 className="font-display text-4xl tracking-wide sm:text-5xl">
+            TAG INDEX
+            <span className="cursor-block" />
+          </h1>
+          <p className="opacity-85">
+            {tags.length} TAG{tags.length === 1 ? "" : "S"} ACROSS THE BLOG.
+          </p>
 
-      <ul className="flex flex-wrap gap-2">
-        {tags.map(({ tag, count }) => (
-          <li key={tag}>
-            <Link
-              href={`/tags/${toSlug(tag)}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-700 transition hover:border-neutral-400 hover:text-neutral-900 dark:border-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-500 dark:hover:text-neutral-50"
-            >
-              <span>#{tag}</span>
-              <span className="font-mono text-xs text-neutral-500 dark:text-neutral-500">
-                {count}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+          <hr className="crt-hr" />
+
+          {tags.length === 0 ? (
+            <p className="opacity-75">NO TAGS DEFINED.</p>
+          ) : (
+            <ul className="flex flex-wrap gap-2">
+              {tags.map(({ tag, count }) => (
+                <li key={tag}>
+                  <Link
+                    href={`/tags/${toSlug(tag)}`}
+                    className="inline-flex items-baseline gap-2 border border-phosphor-dim px-3 py-1 font-mono text-sm uppercase tracking-wider no-underline transition hover:border-phosphor hover:bg-phosphor/[0.08] hover:text-phosphor"
+                  >
+                    <span>#{tag}</span>
+                    <span className="text-xs opacity-70">×{count}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </CrtScreen>
     </div>
   );
 }
