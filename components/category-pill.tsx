@@ -5,9 +5,9 @@ export function CategoryPill({ category }: { category: string }) {
   return (
     <Link
       href={`/categories/${toSlug(category)}`}
-      className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-700 transition hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700"
+      className="inline-flex items-center border border-phosphor px-2 py-0.5 font-mono text-xs uppercase tracking-wider text-phosphor no-underline transition hover:bg-phosphor hover:text-phosphor-deep"
     >
-      {category}
+      ▎ {category}
     </Link>
   );
 }
