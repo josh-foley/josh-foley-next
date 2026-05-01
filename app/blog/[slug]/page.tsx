@@ -46,19 +46,21 @@ export default async function PostPage({
     <article className="mx-auto max-w-prose px-6 py-16">
       <Link
         href="/blog"
-        className="mb-8 inline-block font-mono text-xs text-retro-stone transition hover:text-apple-blue"
+        className="mb-8 inline-block font-mono text-xs text-retro-stone transition hover:text-apple-blue dark:text-[#8a9a8a] dark:hover:text-retro-crt"
       >
         ← Back to blog
       </Link>
 
       <header className="mb-10">
-        <div className="mb-3 flex items-center gap-2 font-mono text-xs text-retro-stone">
+        <div className="mb-3 flex items-center gap-2 font-mono text-xs text-retro-stone dark:text-[#8a9a8a]">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
         </div>
-        <h1 className="text-3xl font-bold tracking-tight text-retro-ink">
+        <h1 className="text-3xl font-bold tracking-tight text-retro-ink dark:text-retro-beige-warm">
           {post.title}
         </h1>
-        <p className="mt-3 text-retro-stone">{post.description}</p>
+        <p className="mt-3 text-retro-stone dark:text-[#9aaa9a]">
+          {post.description}
+        </p>
         <div className="mt-4 flex flex-wrap items-center gap-1.5">
           <CategoryPill category={post.category} />
           {post.tags.map((tag) => (
@@ -67,7 +69,7 @@ export default async function PostPage({
         </div>
       </header>
 
-      <div className="prose prose-neutral max-w-none prose-headings:tracking-tight prose-headings:text-retro-ink prose-p:text-retro-stone prose-li:text-retro-stone prose-strong:text-retro-ink prose-pre:bg-retro-code-bg prose-pre:p-0 prose-code:before:hidden prose-code:after:hidden">
+      <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:tracking-tight prose-headings:text-retro-ink prose-p:text-retro-stone prose-li:text-retro-stone prose-strong:text-retro-ink prose-pre:bg-retro-code-bg prose-pre:p-0 prose-code:before:hidden prose-code:after:hidden dark:prose-headings:text-retro-beige-warm dark:prose-p:text-[#b8c4b8] dark:prose-li:text-[#b8c4b8] dark:prose-strong:text-retro-beige-warm">
         <MDXContent code={post.body} />
       </div>
     </article>

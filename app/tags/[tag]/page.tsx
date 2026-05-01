@@ -35,13 +35,13 @@ export default async function TagPage({
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <header className="mb-10">
-        <p className="font-mono text-xs uppercase tracking-wide text-retro-stone">
+        <p className="font-mono text-xs uppercase tracking-wide text-retro-stone dark:text-[#8a9a8a]">
           Tag
         </p>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-retro-ink">
+        <h1 className="mt-1 text-3xl font-bold tracking-tight text-retro-ink dark:text-retro-beige-warm">
           #{tag}
         </h1>
-        <p className="mt-2 text-retro-stone">
+        <p className="mt-2 text-retro-stone dark:text-[#9aaa9a]">
           {posts.length} {posts.length === 1 ? "post" : "posts"}.
         </p>
       </header>

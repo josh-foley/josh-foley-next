@@ -13,10 +13,10 @@ export default function TagsPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <header className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-retro-ink">
+        <h1 className="text-3xl font-bold tracking-tight text-retro-ink dark:text-retro-beige-warm">
           Tags
         </h1>
-        <p className="mt-2 text-retro-stone">
+        <p className="mt-2 text-retro-stone dark:text-[#9aaa9a]">
           {tags.length} {tags.length === 1 ? "tag" : "tags"} across the blog.
         </p>
       </header>
@@ -26,10 +26,10 @@ export default function TagsPage() {
           <li key={tag}>
             <Link
               href={`/tags/${toSlug(tag)}`}
-              className="inline-flex items-center gap-1.5 rounded-none border-2 border-retro-line px-3 py-1 text-sm text-retro-stone transition hover:border-retro-stone hover:text-retro-ink"
+              className="inline-flex items-center gap-1.5 rounded-none border-2 border-retro-line px-3 py-1 text-sm text-retro-stone transition hover:border-retro-stone hover:text-retro-ink dark:border-emerald-900/45 dark:text-[#9aaa9a] dark:hover:border-retro-crt/40 dark:hover:text-retro-beige-warm"
             >
               <span>#{tag}</span>
-              <span className="font-mono text-xs text-retro-stone">
+              <span className="font-mono text-xs text-retro-stone dark:text-[#8a9a8a]">
                 {count}
               </span>
             </Link>

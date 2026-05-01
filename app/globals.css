@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  @apply bg-retro-beige-warm font-sans text-retro-ink antialiased;
+  @apply bg-retro-beige-warm font-sans text-retro-ink antialiased dark:bg-[#0c100c] dark:text-retro-beige-warm;
 }
 
 /* rehype-pretty-code emits per-line spans we use for line numbering / highlight. */
@@ -46,11 +46,11 @@ pre [data-highlighted-chars] {
 /* rehype-pretty-code wraps inline code with `data-inline-code`; restyle so
    it isn't rendered as a full block. */
 :not(pre) > code {
-  @apply rounded border border-retro-line bg-retro-beige px-1 py-0.5 font-mono text-[0.9em] text-retro-ink;
+  @apply rounded border border-retro-line bg-retro-beige px-1 py-0.5 font-mono text-[0.9em] text-retro-ink dark:border-emerald-900/40 dark:bg-[#141a14] dark:text-retro-beige-warm;
 }
 
 pre {
-  @apply overflow-x-auto rounded-none border-2 border-retro-stone bg-retro-code-bg py-4 font-mono text-sm leading-relaxed text-retro-crt;
+  @apply overflow-x-auto rounded-none border-2 border-retro-stone bg-retro-code-bg py-4 font-mono text-sm leading-relaxed text-retro-crt dark:border-retro-crt/25;
 }
 pre code {
   @apply grid bg-transparent p-0 text-inherit;
@@ -61,5 +61,5 @@ figure[data-rehype-pretty-code-figure] {
   @apply my-6;
 }
 figcaption[data-rehype-pretty-code-title] {
-  @apply mb-1 px-1 font-mono text-xs text-retro-stone;
+  @apply mb-1 px-1 font-mono text-xs text-retro-stone dark:text-[#8a9a8a];
 }
