@@ -10,7 +10,7 @@ export default function HomePage() {
       <section className="mb-16">
         <h1 className="text-3xl font-bold tracking-tight text-retro-ink dark:text-retro-beige-warm">
           Hi, I&apos;m{" "}
-          <span className="font-mono text-[#04650D]">Josh</span>
+          <span className="text-[#04650D]">Josh</span>
           .
         </h1>
         <p className="mt-4 max-w-prose text-retro-stone dark:text-[#9aaa9a]">
