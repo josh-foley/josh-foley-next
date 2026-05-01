@@ -17,15 +17,19 @@ export default function BlogIndexPage() {
           Blog
         </h1>
         <p className="mt-2 text-retro-stone dark:text-[#9aaa9a]">
-          {posts.length} {posts.length === 1 ? "post" : "posts"}, newest first.
+          {posts.length === 0
+            ? "No posts yet."
+            : `${posts.length} ${posts.length === 1 ? "post" : "posts"}, newest first.`}
         </p>
       </header>
 
-      <div className="flex flex-col gap-2">
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
-      </div>
+      {posts.length > 0 && (
+        <div className="flex flex-col gap-2">
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
