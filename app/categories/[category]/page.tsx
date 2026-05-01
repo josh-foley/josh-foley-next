@@ -42,13 +42,13 @@ export default async function CategoryPage({
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <header className="mb-10">
-        <p className="font-mono text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+        <p className="font-mono text-xs uppercase tracking-wide text-retro-stone">
           Category
         </p>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+        <h1 className="mt-1 text-3xl font-bold tracking-tight text-retro-ink">
           {category}
         </h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+        <p className="mt-2 text-retro-stone">
           {posts.length} {posts.length === 1 ? "post" : "posts"}.
         </p>
       </header>

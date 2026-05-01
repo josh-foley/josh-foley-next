@@ -6,22 +6,20 @@ import { TagPill } from "./tag-pill";
 
 export function PostCard({ post }: { post: Post }) {
   return (
-    <article className="group relative rounded-lg border border-transparent p-4 -mx-4 transition hover:border-neutral-200 hover:bg-neutral-50 dark:hover:border-neutral-800 dark:hover:bg-neutral-900/50">
+    <article className="group relative rounded-none border-2 border-transparent p-4 -mx-4 transition hover:border-retro-line hover:bg-retro-beige">
       <Link href={post.permalink} className="block">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-lg font-semibold tracking-tight text-neutral-900 group-hover:underline dark:text-neutral-50">
+          <h2 className="text-lg font-semibold tracking-tight text-retro-ink group-hover:underline">
             {post.title}
           </h2>
           <time
             dateTime={post.date}
-            className="font-mono text-xs text-neutral-500 dark:text-neutral-400"
+            className="font-mono text-xs text-retro-stone"
           >
             {formatDate(post.date)}
           </time>
         </div>
-        <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-          {post.description}
-        </p>
+        <p className="mt-1 text-sm text-retro-stone">{post.description}</p>
       </Link>
       {(post.tags.length > 0 || post.category) && (
         <div className="mt-3 flex flex-wrap items-center gap-1.5">

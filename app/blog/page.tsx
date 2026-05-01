@@ -13,10 +13,10 @@ export default function BlogIndexPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <header className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+        <h1 className="text-3xl font-bold tracking-tight text-retro-ink">
           Blog
         </h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+        <p className="mt-2 text-retro-stone">
           {posts.length} {posts.length === 1 ? "post" : "posts"}, newest first.
         </p>
       </header>

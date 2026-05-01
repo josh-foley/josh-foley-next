@@ -2,16 +2,16 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-neutral-200 dark:border-neutral-800">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2 px-6 py-6 text-xs text-neutral-500 dark:text-neutral-400">
+    <footer className="mt-24 border-t-2 border-retro-line bg-retro-beige">
+      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2 px-6 py-6 text-xs text-retro-stone">
         <span>© {new Date().getFullYear()} Josh Foley</span>
         <nav className="flex items-center gap-4">
-          <Link href="/blog" className="hover:text-neutral-900 dark:hover:text-neutral-50">
+          <Link href="/blog" className="transition hover:text-retro-ink">
             Blog
           </Link>
           <a
             href="https://github.com/josh-foley"
-            className="hover:text-neutral-900 dark:hover:text-neutral-50"
+            className="transition hover:text-retro-ink"
             target="_blank"
             rel="noreferrer"
           >

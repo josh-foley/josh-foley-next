@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-sans: ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, monospace;
 }
 
 html {
@@ -15,7 +13,7 @@ html {
 }
 
 body {
-  @apply bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-50;
+  @apply bg-retro-beige-warm font-sans text-retro-ink antialiased;
 }
 
 /* rehype-pretty-code emits per-line spans we use for line numbering / highlight. */
@@ -48,11 +46,11 @@ pre [data-highlighted-chars] {
 /* rehype-pretty-code wraps inline code with `data-inline-code`; restyle so
    it isn't rendered as a full block. */
 :not(pre) > code {
-  @apply rounded bg-neutral-100 px-1 py-0.5 font-mono text-[0.9em] text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200;
+  @apply rounded border border-retro-line bg-retro-beige px-1 py-0.5 font-mono text-[0.9em] text-retro-ink;
 }
 
 pre {
-  @apply overflow-x-auto rounded-lg border border-neutral-800 bg-[#0d1117] py-4 text-sm leading-relaxed;
+  @apply overflow-x-auto rounded-none border-2 border-retro-stone bg-retro-code-bg py-4 font-mono text-sm leading-relaxed text-retro-crt;
 }
 pre code {
   @apply grid bg-transparent p-0 text-inherit;
@@ -63,5 +61,5 @@ figure[data-rehype-pretty-code-figure] {
   @apply my-6;
 }
 figcaption[data-rehype-pretty-code-title] {
-  @apply mb-1 px-1 font-mono text-xs text-neutral-500;
+  @apply mb-1 px-1 font-mono text-xs text-retro-stone;
 }

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { href: "/blog", label: "Blog" },
@@ -9,11 +8,11 @@ const navLinks = [
 
 export function Header() {
   return (
-    <header className="border-b border-neutral-200 dark:border-neutral-800">
+    <header className="border-b-2 border-retro-line bg-retro-beige">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="font-mono text-sm font-semibold tracking-tight text-neutral-900 hover:text-neutral-600 dark:text-neutral-50 dark:hover:text-neutral-300"
+          className="font-mono text-sm font-semibold uppercase tracking-wider text-retro-ink transition hover:text-retro-stone"
         >
           josh foley
         </Link>
@@ -22,12 +21,11 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-2 py-1 text-sm text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50"
+              className="rounded-none px-2 py-1 text-sm text-retro-stone transition hover:bg-retro-beige-warm hover:text-retro-ink"
             >
               {link.label}
             </Link>
           ))}
-          <ThemeToggle />
         </nav>
       </div>
     </header>
