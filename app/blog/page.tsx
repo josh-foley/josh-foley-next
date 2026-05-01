@@ -4,7 +4,8 @@ import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Every post, sorted newest first.",
+  description:
+    "Posts on software, family, fitness, music, and other things I'm thinking about.",
 };
 
 export default function BlogIndexPage() {

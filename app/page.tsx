@@ -15,11 +15,10 @@ export default function HomePage() {
           .
         </h1>
         <p className="mt-4 max-w-prose text-retro-stone dark:text-[#9aaa9a]">
-          I build software for a living and write about it occasionally. Outside
-          of work I&apos;m a twin dad, I care a lot about fitness, and I spend
-          time on music production and playing guitar. This is a small corner
-          of the internet for notes on engineering, design, and whatever else
-          I&apos;m thinking about.
+          I build software for a living. I&apos;m also a twin dad, into fitness,
+          and I spend a lot of time on music production and playing guitar. This
+          blog is where I write down my thoughts on all of that—work, family,
+          health, music, and whatever else is on my mind.
         </p>
       </section>
 

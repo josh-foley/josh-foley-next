@@ -23,11 +23,13 @@ export const metadata: Metadata = {
     default: "Josh Foley",
     template: "%s · Josh Foley",
   },
-  description: "Notes on software, design, and the things in between.",
+  description:
+    "Thoughts on software, twin parenting, fitness, music, and the rest of life.",
   metadataBase: new URL("https://joshfoley.dev"),
   openGraph: {
     title: "Josh Foley",
-    description: "Notes on software, design, and the things in between.",
+    description:
+      "Thoughts on software, twin parenting, fitness, music, and the rest of life.",
     type: "website",
   },
 };
