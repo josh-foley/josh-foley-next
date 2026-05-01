@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { EB_Garamond, VT323 } from "next/font/google";
+import { Open_Sans, VT323 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-const garamond = EB_Garamond({
+const openSans = Open_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${garamond.variable} ${vt323.variable} flex min-h-screen flex-col`}
+        className={`${openSans.variable} ${vt323.variable} flex min-h-screen flex-col`}
       >
         {/* Remove forcedTheme (and add <ThemeToggle /> to the header) when you ship dark mode. */}
         <ThemeProvider

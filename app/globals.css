@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: ui-serif, Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
 }
 
