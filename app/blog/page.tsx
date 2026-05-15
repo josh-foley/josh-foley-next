@@ -4,7 +4,8 @@ import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Every post, sorted newest first.",
+  description:
+    "Posts on software, family, fitness, music, and other things I'm thinking about.",
 };
 
 export default function BlogIndexPage() {
@@ -13,19 +14,23 @@ export default function BlogIndexPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <header className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+        <h1 className="text-3xl font-bold tracking-tight text-retro-ink dark:text-retro-beige-warm">
           Blog
         </h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-          {posts.length} {posts.length === 1 ? "post" : "posts"}, newest first.
+        <p className="mt-2 text-retro-stone dark:text-[#9aaa9a]">
+          {posts.length === 0
+            ? "No posts yet."
+            : `${posts.length} ${posts.length === 1 ? "post" : "posts"}, newest first.`}
         </p>
       </header>
 
-      <div className="flex flex-col gap-2">
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
-      </div>
+      {posts.length > 0 && (
+        <div className="flex flex-col gap-2">
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -4,38 +4,44 @@ import { getAllPosts } from "@/lib/posts";
 
 export default function HomePage() {
   const recent = getAllPosts().slice(0, 5);
+  const hasPosts = recent.length > 0;
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <section className="mb-16">
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
-          Hi, I&apos;m Josh.
+        <h1 className="text-3xl font-bold tracking-tight text-retro-ink dark:text-retro-beige-warm">
+          Hi, I&apos;m{" "}
+          <span className="text-[#04650D]">Josh</span>
+          .
         </h1>
-        <p className="mt-4 max-w-prose text-neutral-600 dark:text-neutral-400">
-          I build software for a living and write about it occasionally. This
-          is a small corner of the internet for notes on engineering, design,
-          and whatever else I&apos;m thinking about.
+        <p className="mt-4 max-w-prose text-retro-stone dark:text-[#9aaa9a]">
+          I build software for a living. I&apos;m also a twin dad, into fitness,
+          and I spend a lot of time on music production and playing guitar. This
+          blog is where I write down my thoughts on all of that—work, family,
+          health, music, and whatever else is on my mind.
         </p>
       </section>
 
-      <section>
-        <div className="mb-6 flex items-baseline justify-between">
-          <h2 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
-            Recent posts
-          </h2>
-          <Link
-            href="/blog"
-            className="text-sm text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50"
-          >
-            View all →
-          </Link>
-        </div>
-        <div className="flex flex-col gap-2">
-          {recent.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
-      </section>
+      {hasPosts && (
+        <section>
+          <div className="mb-6 flex items-baseline justify-between">
+            <h2 className="text-lg font-semibold tracking-tight text-retro-ink dark:text-retro-beige-warm">
+              Recent posts
+            </h2>
+            <Link
+              href="/blog"
+              className="text-sm text-retro-stone transition hover:text-apple-blue dark:text-[#8a9a8a] dark:hover:text-retro-crt"
+            >
+              View all →
+            </Link>
+          </div>
+          <div className="flex flex-col gap-2">
+            {recent.map((post) => (
+              <PostCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

@@ -3,11 +3,11 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+/** Wire into the header when dark mode is ready; theme is forced to light until then. */
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid SSR/CSR mismatch: theme is only known after mount.
   useEffect(() => setMounted(true), []);
 
   const isDark = mounted && resolvedTheme === "dark";
@@ -17,9 +17,8 @@ export function ThemeToggle() {
       type="button"
       aria-label="Toggle theme"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-8 w-8 items-center justify-center rounded-md text-neutral-600 transition hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+      className="inline-flex h-8 w-8 items-center justify-center rounded-none border-2 border-retro-line bg-retro-beige text-retro-stone transition hover:border-retro-stone hover:text-retro-ink dark:border-emerald-900/50 dark:bg-[#0f160f] dark:text-retro-beige-warm dark:hover:border-retro-crt/40 dark:hover:text-retro-crt"
     >
-      {/* Sun icon (shown in dark mode) */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -36,7 +35,6 @@ export function ThemeToggle() {
         <circle cx="12" cy="12" r="4" />
         <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
       </svg>
-      {/* Moon icon (shown in light mode) */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

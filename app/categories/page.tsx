@@ -13,24 +13,24 @@ export default function CategoriesPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <header className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+        <h1 className="text-3xl font-bold tracking-tight text-retro-ink dark:text-retro-beige-warm">
           Categories
         </h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+        <p className="mt-2 text-retro-stone dark:text-[#9aaa9a]">
           {categories.length}{" "}
           {categories.length === 1 ? "category" : "categories"}.
         </p>
       </header>
 
-      <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800">
+      <ul className="flex flex-col divide-y-2 divide-retro-line dark:divide-emerald-950/50">
         {categories.map(({ category, count }) => (
           <li key={category}>
             <Link
               href={`/categories/${toSlug(category)}`}
-              className="flex items-center justify-between py-3 text-neutral-700 transition hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-50"
+              className="flex items-center justify-between py-3 text-retro-stone transition hover:text-retro-ink dark:text-[#9aaa9a] dark:hover:text-retro-beige-warm"
             >
               <span className="text-sm font-medium">{category}</span>
-              <span className="font-mono text-xs text-neutral-500 dark:text-neutral-500">
+              <span className="font-mono text-xs text-retro-stone dark:text-[#8a9a8a]">
                 {count} {count === 1 ? "post" : "posts"}
               </span>
             </Link>
